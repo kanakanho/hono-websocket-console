@@ -1,0 +1,15 @@
+services:
+  workerd:
+    container_name: workerd
+    build:
+      context: .
+      dockerfile: Docker/workerd/Dockerfile
+    volumes:
+      - ./workerd:/workerd
+      - /workerd/node_modules
+      - /workerd/.wrangler
+    ports:
+      - 8787:8787
+    expose:
+      - 8787
+    command: yarn dev
